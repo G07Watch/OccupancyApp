@@ -1,0 +1,19 @@
+{
+  "name": "occupancyapp",
+  "version": "1.0.0",
+  "description": "An app to display occupancy",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/G07Watch/OccupancyApp.git"
+  },
+  "author": "Garvin Ming",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/G07Watch/OccupancyApp/issues"
+  },
+  "homepage": "https://github.com/G07Watch/OccupancyApp#readme"
+}
