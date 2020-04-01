@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/G07Watch/OccupancyApp/issues"
   },
-  "homepage": "https://github.com/G07Watch/OccupancyApp#readme"
+  "homepage": "https://github.com/G07Watch/OccupancyApp#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "webpack": "^4.42.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.11"
+  }
 }
