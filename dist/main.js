@@ -50,17 +50,21 @@ const fetchCompanies = async (companyName, companyLocation, searchResults) => {
 
 */
 
-const fetchCompanies =  async(companyName, companyLocation, searchResults) => {
+const fetchCompanies =  async(event) => {
+  event.preventDefault();
+  const companyName = document.getElementById("companyName").value;
+  const companyLocation = document.getElementById("companyLocation").value;
+  const searchResults = document.getElementById("searchResults");
   console.log(companyLocation);
   console.log(companyName);
 
 
   if((companyName) && (companyLocation)){
     let response = await fetchBusiness(companyName, companyLocation)
-      .then(res => res.businesses)
-      .then(businesses => businesses.slice(0, 5))
-      .then(firstFive => firstFive.map(element => { element.name }))
-      .catch(error => console.error(error));
+      // .then(res => res.businesses);
+      // .then(businesses => businesses.slice(0, 5))
+      // .then(firstFive => firstFive.map(element => { element.name }))
+      // .catch(error => console.error(error));
 
     console.log(response);
     searchResults.textContent = `${response}`;
@@ -72,12 +76,9 @@ const fetchCompanies =  async(companyName, companyLocation, searchResults) => {
 // companyName.addEventListener("change", ));
 // companyLocation.addEventListener("change", fetchCompanies(name = 'default', location));
 
-const companyName = document.getElementById("companyName").value; 
-companyName.addEventListener("change", companyName)
-const companyLocation = document.getElementById("companyLocation").value;
-const searchResults = document.getElementById("searchResults");
+// const companyName = document.getElementById("companyName").value; 
+// const companyLocation = document.getElementById("companyLocation").value;
+// const searchResults = document.getElementById("searchResults");
 const companySearch = document.getElementById("companySearch");
 
-companySearch.addEventListener('submit', fetchCompanies(companyName, companyLocation, searchResults));
-// console.log(companyLocation);
-// console.log(companyName);
+companySearch.addEventListener('submit', fetchCompanies);
