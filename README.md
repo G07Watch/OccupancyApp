@@ -6,6 +6,11 @@ Construction Notes:
 
     The Yelp API apparently does not support CORS.  It does support JSONP.
   
+    JSONP support status:
+      Node-fetch: ??
+      axios: None
+      jquery-ajax: yes
+  
   The following is a method to utilize JSONP as provided by
    https://github.com/axios/axios/blob/master/COOKBOOK.md#jsonp
 
