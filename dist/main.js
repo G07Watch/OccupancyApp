@@ -50,10 +50,11 @@ const fetchCompanies = async (companyName, companyLocation, searchResults) => {
 
 */
 
-const fetchCompanies =  async(companyName, companyLocation, searchResults) => {
-  console.log(companyLocation);
-  console.log(companyName);
-
+const fetchCompanies =  async(event) => {
+  event.preventDefault();
+  const companyName = document.getElementById("companyName").value;
+  const companyLocation = document.getElementById("companyLocation").value;
+  const searchResults = document.getElementById("searchResults");
 
   if((companyName) && (companyLocation)){
     let response = await fetchBusiness(companyName, companyLocation)
@@ -72,12 +73,9 @@ const fetchCompanies =  async(companyName, companyLocation, searchResults) => {
 // companyName.addEventListener("change", ));
 // companyLocation.addEventListener("change", fetchCompanies(name = 'default', location));
 
-const companyName = document.getElementById("companyName").value; 
-companyName.addEventListener("change", companyName)
-const companyLocation = document.getElementById("companyLocation").value;
-const searchResults = document.getElementById("searchResults");
+// const companyName = document.getElementById("companyName").value; 
+// const companyLocation = document.getElementById("companyLocation").value;
+// const searchResults = document.getElementById("searchResults");
 const companySearch = document.getElementById("companySearch");
 
-companySearch.addEventListener('submit', fetchCompanies(companyName, companyLocation, searchResults));
-// console.log(companyLocation);
-// console.log(companyName);
+companySearch.addEventListener('submit', fetchCompanies);
