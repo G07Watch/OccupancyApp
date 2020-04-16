@@ -25,3 +25,9 @@ Construction Notes:
         console.log(data);
       }
     }); -->
+
+
+Considerations: 
+  with the Yelp API having CORS issues, proceeding without the Yelp API might be better in the interim.
+
+  Is not using React reasonable or practical for the purposes of this application?
