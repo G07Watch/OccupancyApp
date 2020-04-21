@@ -7,6 +7,16 @@ Background and Overview
 
 
 
+Planned Features
+
+  - Organization Registration:
+       Allows a business/organiztionn to create an account
+  - Coordinator Occupancy Panel:
+      Allows the administrator of the Org (organization's) change the account settings
+  - Public Information Board:
+      Allows anyone the ability to find an Org and look at the publicly available information
+
+
 
 
 
