@@ -1,4 +1,4 @@
-const {fetchBusiness} = require('../src/utils');
+/* const {fetchBusiness} = require('../src/utils'); */
 
 /* 
 TEST fetchBusiness is returning proper data
@@ -49,7 +49,7 @@ const fetchCompanies = async (companyName, companyLocation, searchResults) => {
 }
 
 */
-
+/* 
 const fetchCompanies =  async(event) => {
   event.preventDefault();
   const companyName = document.getElementById("companyName").value;
@@ -69,13 +69,13 @@ const fetchCompanies =  async(event) => {
   
 
   return;
-}
+} */
 // companyName.addEventListener("change", ));
 // companyLocation.addEventListener("change", fetchCompanies(name = 'default', location));
 
 // const companyName = document.getElementById("companyName").value; 
 // const companyLocation = document.getElementById("companyLocation").value;
 // const searchResults = document.getElementById("searchResults");
-const companySearch = document.getElementById("companySearch");
+/* const companySearch = document.getElementById("companySearch");
 
-companySearch.addEventListener('submit', fetchCompanies);
+companySearch.addEventListener('submit', fetchCompanies); */

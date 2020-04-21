@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
-/* const jsonp = require('jsonp'); */
-const {secretOrKey} = require('../config/keys_dev.js');
+/* const fetch = require('node-fetch');
+const jsonp = require('jsonp'); 
+const { secretOrKey } = require('../config/keys_dev.js');*/
 
 /* let response = await fetch(
     `https://api.yelp.com/v3/businesses/search?term=${name}&location=${location}`,{
@@ -39,4 +39,4 @@ fetchBusiness('katz', 'New York City')
 
 
 
-module.exports = { fetchBusiness }
+/*module.exports = { fetchBusiness }*/
