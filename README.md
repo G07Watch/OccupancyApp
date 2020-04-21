@@ -11,8 +11,11 @@ Planned Features
 
   - Organization Registration:
        Allows a business/organiztion to create an account
+  - Update Occupancy:
+      Simple component that lets coordinator quickly update the 
+        number of people at the location
   - Coordinator Occupancy Panel:
-      Allows the administrator of the Org (organization's) change the account settings
+      Allows the administrator of the Org (organization's) to change the account settings
   - Public Information Board:
       Allows anyone the ability to find an Org and look at the publicly available information
 
@@ -29,3 +32,18 @@ Technologies
     Redux
 
 
+Features
+
+  Organization Registration Page
+    - Name
+    - Address
+    - Password
+    - Confirm Password
+    - Maximum Occupancy of the facility/building
+    - Current Occupancy of the facility/building
+
+
+  Update Occupancy
+    - Number of Occupants
+
+  
