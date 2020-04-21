@@ -4,9 +4,8 @@
   "description": "An app to display occupancy",
   "main": "main.js",
   "scripts": {
-    "test": "test",
-    "postinstall": "webpack",
-    "webpack": "webpack --mode=development --watch"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "repository": {
     "type": "git",
