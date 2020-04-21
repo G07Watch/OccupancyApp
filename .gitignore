@@ -3,3 +3,4 @@ bundle.js
 bundle.js.map
 config/keys_dev.js
 webpack.config.js
+structure.md
