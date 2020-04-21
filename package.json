@@ -19,12 +19,9 @@
   },
   "homepage": "https://github.com/G07Watch/OccupancyApp#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0",
     "react": "^16.13.1",
-    "redux": "^4.0.5",
-    "webpack": "^4.42.1"
+    "redux": "^4.0.5"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.11"
   }
 }
