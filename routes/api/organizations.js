@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
+const org = express.Router();
 
-router.get('/test', (req, res) => {
+org.get('/test', (req, res) => {
   res.json ({ msg: "This is the organization route"});
 });
 
-module.exports = router;
+module.exports = org;
