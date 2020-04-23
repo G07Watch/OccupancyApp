@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const app = express();
 const db = require('./config/keys_dev').mongoURI;
+const org = require('./routes/api/organizations')
 
 console.log("app:", app);
 const appGet = app.get;
@@ -13,9 +14,10 @@ mongoose
   .catch(err => console.log(err));
 
 app.get("/", (req, res) =>{
-  console.log(res)
   res.send("Hi World!");
 });
+
+app.use('/api/org', org)
 
 const port = process.env.PORT || 5000;
 
