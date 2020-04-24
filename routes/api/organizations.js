@@ -1,5 +1,11 @@
 const express = require('express');
 const org = express.Router();
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
+
+const keys = require("../../config/keys_dev");
+
 const Organization = require('../../models/Organization')
 const validateRegister = require('../../validation/register');
 const validateLogin = require('../../validation/login');
@@ -24,6 +30,33 @@ org.post('/register', (req, res) => {
         maxOccupancy: req.body.maxOccupancy,
         currentOccupancy: req.body.currentOccupancy,
       })
+
+
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newOrganization.password, salt, (err, hash) => {
+          if (err) throw err;
+          newOrganization.password = hash;
+          newOrganization
+            .save()
+            .then(org => {
+              const payload = {
+                id: organizaion.id,
+                name: org.name
+              };
+
+              jwt.sign(payload,
+                keys.secretOrKey,
+                { expiresIn: 14400 },
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: "Bearer " + token
+                  });
+                });
+            })
+            .catch(err => console.log(err));
+        });
+      });
 
       newOrganization.save()
       .then(org => res.send(org))
