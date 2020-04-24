@@ -2,16 +2,23 @@ const express = require("express");
 const mongoose = require('mongoose');
 const app = express();
 const db = require('./config/keys_dev').mongoURI;
-const org = require('./routes/api/organizations')
+const org = require('./routes/api/organizations');
+const Organization = require('./models/Organization');
+const bodyParser = require('body-parser');
 
-console.log("app:", app);
 const appGet = app.get;
-console.log("app.get:", appGet);
 
 mongoose
   .connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
+
+
+app.use(bodyParser.urlencoded({
+  extended:false
+}));
+
+app.use(bodyParser.json());
 
 app.get("/", (req, res) =>{
   res.send("Hi World!");
