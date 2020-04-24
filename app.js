@@ -21,15 +21,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get("/", (req, res) =>{
-  /* const org = new Organization ({
-    name: 'First',
-    email: 'first@first.com',
-    address: '1 First Street',
-    password: '123password',
-    maxOccupancy: '10',
-    currentOccupancy: '1'
-  })
-  org.save() */
   res.send("Hi World!");
 });
 
