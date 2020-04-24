@@ -24,7 +24,6 @@ const OrganizationSchema = new Schema({
   },
   currentOccupancy: {
     type: Number,
-    default: 1,
     required: true
   },
   date: {
