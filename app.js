@@ -4,6 +4,7 @@ const app = express();
 const db = require('./config/keys_dev').mongoURI;
 const org = require('./routes/api/organizations');
 const Organization = require('./models/Organization');
+const bodyParser = require('body-parser');
 
 const appGet = app.get;
 
@@ -12,8 +13,15 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
+
+app.use(bodyParser.urlencoded({
+  extended:false
+}));
+
+app.use(bodyParser.json());
+
 app.get("/", (req, res) =>{
-  const org = new Organization ({
+  /* const org = new Organization ({
     name: 'First',
     email: 'first@first.com',
     address: '1 First Street',
@@ -21,7 +29,7 @@ app.get("/", (req, res) =>{
     maxOccupancy: '10',
     currentOccupancy: '1'
   })
-  org.save();
+  org.save() */
   res.send("Hi World!");
 });
 
