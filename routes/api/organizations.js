@@ -65,4 +65,28 @@ org.post('/register', (req, res) => {
   })
 })
 
+org.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  Organization.findOne({email})
+  .then(org => {
+    if(!org){
+      return res.status(404).json({email: "This email does not exist."})
+    }
+
+    bcrypt.compare(password, org.password)
+      .then(isMatch => {
+        if(isMatch) {
+
+          res.json({msg: "Successfuly logged in"})
+        } else {
+          return res.status(400).json( {password: "Incorrect password."});
+        }
+
+      })
+
+  })
+})
+
 module.exports = org;
