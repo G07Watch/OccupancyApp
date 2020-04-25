@@ -65,4 +65,43 @@ org.post('/register', (req, res) => {
   })
 })
 
+org.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  Organization.findOne({email})
+  .then(org => {
+    if(!org){
+      return res.status(404).json({email: "This email does not exist."})
+    }
+
+    bcrypt.compare(password, org.password)
+      .then(isMatch => {
+
+        if(isMatch) {
+          const payload = {
+            id: org.id,
+            name: org.name
+          };
+
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            // Tell the key to expire in four hours
+            { expiresIn: 14400 },
+            (err, token) => {
+              res.json({
+                success: true,
+                token: 'Bearer ' + token
+              });
+            });
+        } else {
+          res.status(422).json({ errors: { email: 'Wrong email/password combo' } });
+        }
+
+      })
+
+  })
+})
+
 module.exports = org;
