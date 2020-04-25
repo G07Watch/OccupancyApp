@@ -77,11 +77,26 @@ org.post('/login', (req, res) => {
 
     bcrypt.compare(password, org.password)
       .then(isMatch => {
-        if(isMatch) {
 
-          res.json({msg: "Successfuly logged in"})
+        if(isMatch) {
+          const payload = {
+            id: org.id,
+            name: org.name
+          };
+
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            // Tell the key to expire in four hours
+            { expiresIn: 14400 },
+            (err, token) => {
+              res.json({
+                success: true,
+                token: 'Bearer ' + token
+              });
+            });
         } else {
-          return res.status(400).json( {password: "Incorrect password."});
+          res.status(422).json({ errors: { email: 'Wrong email/password combo' } });
         }
 
       })
