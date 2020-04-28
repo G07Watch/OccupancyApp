@@ -15,6 +15,12 @@ org.get('/test', (req, res) => {
 });
 
 org.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegister(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   Organization.findOne({
     email: req.body.email
   })
@@ -40,8 +46,12 @@ org.post('/register', (req, res) => {
             .save()
             .then(org => {
               const payload = {
-                id: organizaion.id,
-                name: org.name
+                id: org.id,
+                name: org.name,
+                email: org.email,
+                address: org.address,
+                maxOccupancy: org.maxOccupancy,
+                currentOccupancy: org.currentOccupancy
               };
 
               jwt.sign(payload,
@@ -58,21 +68,26 @@ org.post('/register', (req, res) => {
         });
       });
 
-      newOrganization.save()
-      .then(org => res.send(org))
-      .catch(error => res.send(error));
     }
   })
 })
 
 org.post('/login', (req, res) => {
+
+  const { errors, isValid } = validateLogin(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
-  Organization.findOne({email})
+  Organization.findOne({ email })
   .then(org => {
     if(!org){
-      return res.status(404).json({email: "This email does not exist."})
+      errors.org = 'Wrong email/password combo';
+      return res.status(422).json({ email: 'Wrong email/password combo' })
     }
 
     bcrypt.compare(password, org.password)
@@ -81,7 +96,11 @@ org.post('/login', (req, res) => {
         if(isMatch) {
           const payload = {
             id: org.id,
-            name: org.name
+            name: org.name,
+            email: org.email,
+            address: org.address,
+            maxOccupancy: org.maxOccupancy,
+            currentOccupancy: org.currentOccupancy
           };
 
           jwt.sign(
