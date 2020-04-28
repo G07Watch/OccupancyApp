@@ -15,6 +15,12 @@ org.get('/test', (req, res) => {
 });
 
 org.post('/register', (req, res) => {
+  const { errors, isValid } = validateRegister(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   Organization.findOne({
     email: req.body.email
   })
@@ -62,9 +68,6 @@ org.post('/register', (req, res) => {
         });
       });
 
-      newOrganization.save()
-      .then(org => res.send(org))
-      .catch(error => res.send(error));
     }
   })
 })
