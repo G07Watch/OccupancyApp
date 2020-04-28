@@ -40,8 +40,12 @@ org.post('/register', (req, res) => {
             .save()
             .then(org => {
               const payload = {
-                id: organizaion.id,
-                name: org.name
+                id: org.id,
+                name: org.name,
+                email: org.email,
+                address: org.address,
+                maxOccupancy: org.maxOccupancy,
+                currentOccupancy: org.currentOccupancy
               };
 
               jwt.sign(payload,
@@ -89,7 +93,11 @@ org.post('/login', (req, res) => {
         if(isMatch) {
           const payload = {
             id: org.id,
-            name: org.name
+            name: org.name,
+            email: org.email,
+            address: org.address,
+            maxOccupancy: org.maxOccupancy,
+            currentOccupancy: org.currentOccupancy
           };
 
           jwt.sign(
