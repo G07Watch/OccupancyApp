@@ -66,13 +66,21 @@ org.post('/register', (req, res) => {
 })
 
 org.post('/login', (req, res) => {
+
+  const { errors, isValid } = validateLogin(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
-  Organization.findOne({email})
+  Organization.findOne({ email })
   .then(org => {
     if(!org){
-      return res.status(404).json({email: "This email does not exist."})
+      errors.org = 'Wrong email/password combo';
+      return res.status(422).json({ email: 'Wrong email/password combo' })
     }
 
     bcrypt.compare(password, org.password)
