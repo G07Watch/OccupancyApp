@@ -1,0 +1,8 @@
+{
+  "short_name": "Occupancy",
+  "name": "OccupancyApp",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#FFFFFF",
+  "background_color": "#000000"
+}
