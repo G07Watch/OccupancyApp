@@ -1,8 +1,9 @@
 import React from 'react';
+import Main from './main';
 
 
 export default () => (
   <React.Fragment>
-    <h1>Occupancy App</h1>
+    <Main/>
   </React.Fragment>
 );
